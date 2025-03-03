@@ -1,0 +1,70 @@
+name: Pull Request Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      
+      - name: 📦 Install dependencies using pnpm
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: 🏗️ Build the project
+        run: pnpm run build
+
+  check-types:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      
+      - name: 📦 Install dependencies using pnpm
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: 🔍 Check types
+        run: pnpm run type-check
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      
+      - name: 📦 Install dependencies using pnpm
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: 🧹 Run eslint
+        run: pnpm run lint
+
+      - name: ✨ Run prettier
+        run: pnpm prettier --check .
