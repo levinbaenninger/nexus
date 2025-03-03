@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      
+
       - name: 📦 Install dependencies using pnpm
         run: pnpm install
 
@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      
+
       - name: 📦 Install dependencies using pnpm
         run: pnpm install
 
@@ -77,7 +77,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      
+
       - name: 📦 Install dependencies using pnpm
         run: pnpm install
 
